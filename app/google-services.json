@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "242827401352",
+    "firebase_url": "https://productiveteamapp-default-rtdb.firebaseio.com",
+    "project_id": "productiveteamapp",
+    "storage_bucket": "productiveteamapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:242827401352:android:328ccdeed7a38e1752a73d",
+        "android_client_info": {
+          "package_name": "com.example.productiveteamapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "242827401352-phakf2lqpgr5q5j06rtgqnecj778k964.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxYtkhguXi_Zthefac_kfR7epJFC16xh0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "242827401352-phakf2lqpgr5q5j06rtgqnecj778k964.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

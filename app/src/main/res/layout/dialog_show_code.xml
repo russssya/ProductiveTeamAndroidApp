@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingTop="10dp"
+        android:textAlignment="center"
+        android:background="@color/orange"
+        android:text="@string/code_team"
+        style="@style/main_text"
+        />
+    <EditText
+        style="@style/main_edit_text_style"
+        android:layout_margin="20dp"
+        android:autofillHints="password"
+        android:inputType="text"
+        android:id="@+id/edit_show_code"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:backgroundTint="@color/light_grey"
+            android:text="@string/close"
+            android:textColor="@color/dark_grey"
+            android:id="@+id/button_close_show"
+            />
+        <Button
+            style="@style/edit_button"
+            android:layout_marginStart="30dp"
+            android:text="@string/copy"
+            android:textColor="@color/dark_grey"
+            android:id="@+id/button_copy"
+            />
+    </LinearLayout>
+</LinearLayout>

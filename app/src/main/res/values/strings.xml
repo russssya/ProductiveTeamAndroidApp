@@ -1,0 +1,76 @@
+<resources>
+    <string name="app_name">ProductiveTeamApp</string>
+    <string name="team">Команда</string>
+    <string name="teams">Команди</string>
+    <string name="schedule">Графік</string>
+    <string name="tasks">Задачі</string>
+    <string name="settings">Налаштування</string>
+    <string name="exit">Вихід</string>
+    <string name="UserName">Прізвище</string>
+    <string name="Image">Image</string>
+    <string name="sure_exit">Ви впевнені, що хочете вийти з акаунту?</string>
+
+    <string name="nav_draw_open">Navigation drawer open</string>
+    <string name="nav_draw_close">Navigation drawer close</string>
+
+    <string name="create">Створити</string>
+    <string name="join">Приєднатись</string>
+    <string name="my_teams">Мої команди:</string>
+
+    <string name="email">Електронна пошта</string>
+    <string name="password">Пароль</string>
+    <string name="name">Прізвище</string>
+    <string name="enter">Увійти</string>
+    <string name="registration">Реєстрація</string>
+    <string name="registrate">Зареєструвати</string>
+    <string name="confirmation">Підтвердження паролю</string>
+    <string name="confirm">Підтвердити</string>
+
+    <string name="new_team">Нова команда</string>
+    <string name="team_name">Назва:</string>
+    <string name="code_team">Код команди:</string>
+    <string name="team_description">Опис:</string>
+    <string name="email_manager">Електронна пошта керівника:</string>
+
+    <string name="edit">Змінити</string>
+    <string name="manager_">Керівник:</string>
+    <string name="members_">Фахівці:</string>
+    <string name="discussing">Обговорення</string>
+    <string name="help">Допомога</string>
+    <string name="delete">Видалити</string>
+    <string name="leave">Залишити команду</string>
+    <string name="get_code">Показати код</string>
+    <string name="sure_delete">Ви впевнені, що хочете видалити команду?</string>
+    <string name="sure_leave">Ви впевнені, що хочете залишити команду?</string>
+    <string name="yes">Так</string>
+    <string name="no">Ні</string>
+    <string name="copy">Копіювати</string>
+    <string name="close">Закрити</string>
+
+    <string name="today">Сьогодні</string>
+    <string name="tomorrow">Завтра</string>
+    <string name="month">Місяць</string>
+    <string name="chronology">Хронологія</string>
+
+    <string name="new_task">Нова задача</string>
+    <string name="task_dots">Задача:</string>
+    <string name="task">Задача</string>
+    <string name="task_for">Для:</string>
+    <string name="done">Виконано</string>
+    <string name="move_to_another_date">Перенести на іншу дату</string>
+    <string name="done_dots">Виконано:</string>
+    <string name="when_execute">Коли виконати:</string>
+    <string name="sure_delete_task">Ви впевнені, що хочете видалити задачу?</string>
+
+    <string name="new_chat">Новий чат</string>
+    <string name="message">Повідомлення</string>
+    <string name="clear">Очистити</string>
+    <string name="sure_clear_chat">Ви впевнені, що хочете очистити чат?</string>
+    <string name="sure_delete_chat">Ви впевнені, що хочете видалити чат?</string>
+    
+    <string name="colleagues">Колеги</string>
+    <string name="new_schedule">Новий графік</string>
+    <string name="date">Дата</string>
+    <string name="work_time">Зміна</string>
+    <string name="save">Зберегти</string>
+</resources>

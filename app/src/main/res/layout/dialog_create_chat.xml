@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingTop="10dp"
+        android:textAlignment="center"
+        android:background="@color/orange"
+        android:text="@string/new_chat"
+        style="@style/main_text" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/team_name"
+            style="@style/main_text" />
+        <EditText
+            style="@style/main_edit_text_style"
+            android:layout_marginTop="10dp"
+            android:id="@+id/edit_chat_name"
+            android:autofillHints="name"
+            android:inputType="text" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/task_for"
+            style="@style/main_text" />
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            tools:listitem="@layout/item_team_checkbox"
+            android:id="@+id/list_teams_checkbox"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:backgroundTint="@color/light_grey"
+            android:text="@string/close"
+            android:textColor="@color/dark_grey"
+            android:id="@+id/but_close_create_chat" />
+        <Button
+            style="@style/edit_button"
+            android:layout_marginStart="30dp"
+            android:text="@string/create"
+            android:textColor="@color/dark_grey"
+            android:id="@+id/but_create_chat" />
+    </LinearLayout>
+
+</LinearLayout>

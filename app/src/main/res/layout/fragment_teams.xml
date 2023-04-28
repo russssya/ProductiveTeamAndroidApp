@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white">
+
+    <Button
+        android:id="@+id/button_create"
+        style="@style/teams_button"
+        android:text="@string/create" />
+
+    <Button
+        android:id="@+id/button_join"
+        style="@style/teams_button"
+        android:layout_marginStart="210dp"
+        android:text="@string/join" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:layout_marginStart="20dp"
+        android:text="@string/my_teams"
+        style="@style/main_text" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/list_of_teams"
+        android:layout_marginTop="185dp"
+        tools:listitem="@layout/item_team"
+        />
+</RelativeLayout>
