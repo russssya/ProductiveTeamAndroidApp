@@ -102,6 +102,7 @@ public class FragmentDiscussing extends Fragment implements ListAdapterChat.Item
 
     private void getChatsFromDB(){
         mDatabase.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(list_chats.size()>0) list_chats.clear();
@@ -213,7 +214,7 @@ public class FragmentDiscussing extends Fragment implements ListAdapterChat.Item
                 chat.chat_code= pushedRef.getKey();
                 pushedRef.setValue(chat);
             }
-            Toast.makeText(getContext(), "Задача створена", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Чат створено", Toast.LENGTH_SHORT).show();
             dialog.dismiss();
         });
         but_close_create_chat.setOnClickListener(v -> dialog.dismiss());

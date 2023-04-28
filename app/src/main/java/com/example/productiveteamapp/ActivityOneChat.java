@@ -117,9 +117,11 @@ public class ActivityOneChat extends AppCompatActivity {
     private void sendMessage(){
         date=dateFormat.format(new Date());
         String text=edit_message.getText().toString();
-        Message message=new Message(text, user_name, date);
-        chatTable.child("Messages").push().setValue(message);
-        edit_message.setText("");
+        if(!text.isEmpty()){
+            Message message=new Message(text, user_name, date);
+            chatTable.child("Messages").push().setValue(message);
+            edit_message.setText("");
+        }
     }
 
     private void showDialogClearChat(){
