@@ -160,13 +160,11 @@ public class ActivityOneTeam extends AppCompatActivity {
     private void showMemberPopUp(View view){
         PopupMenu popupMenu=new PopupMenu(this, view);
         popupMenu.setOnMenuItemClickListener(item -> {
-            switch (item.getItemId()){
-                case R.id.leave_team:
-                    showLeaveDialog();
-                    return true;
-                default:
-                    return false;
+            if (item.getItemId() == R.id.leave_team) {
+                showLeaveDialog();
+                return true;
             }
+            return false;
         });
         popupMenu.inflate(R.menu.popup_teams_member);
         popupMenu.show();
@@ -181,11 +179,17 @@ public class ActivityOneTeam extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         snapshot.child("Teams").child(code).getRef().removeValue();
                         snapshot.child("Users").child(currentUser.getUid()).child("Teams").child(code).getRef().removeValue();
+                        for(DataSnapshot dsUser: snapshot.child("Users").getChildren()){
+                            if(dsUser.child("Teams").child(code).exists()){
+                                dsUser.child("Teams").child(code).getRef().removeValue();
+                            }
+                        }
                         Toast.makeText(ActivityOneTeam.this, "Команда видалена", Toast.LENGTH_SHORT).show();
                         finish();
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(ActivityOneTeam.this, "Error", Toast.LENGTH_SHORT).show();
                     }
                 }))
                 .setNegativeButton(R.string.no, (dialog, which) -> dialog.dismiss());
@@ -195,11 +199,27 @@ public class ActivityOneTeam extends AppCompatActivity {
     private void showLeaveDialog(){
         AlertDialog.Builder builder=new AlertDialog.Builder(ActivityOneTeam.this);
         builder.setMessage(R.string.sure_leave)
-                .setPositiveButton(R.string.yes, (dialog, which) -> {
-                    userTable.child("Teams").child(code).removeValue();
-                    Toast.makeText(ActivityOneTeam.this, "Ви залишили команду", Toast.LENGTH_SHORT).show();
-                    finish();
-                })
+                .setPositiveButton(R.string.yes, (dialog, which) ->
+                        mDataBase.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        snapshot.child("Users").child(currentUser.getUid()).child("Teams").child(code).getRef().removeValue();
+                        for(DataSnapshot dsMember: snapshot.child("Teams").child(code).child("Members").getChildren()){
+                            String emailMember=dsMember.child("email").getValue(String.class);
+                            assert emailMember != null;
+                            if(emailMember.equals(currentUser.getEmail())){
+                                dsMember.getRef().removeValue();
+                                break;
+                            }
+                        }
+                        Toast.makeText(ActivityOneTeam.this, "Ви залишили команду", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(ActivityOneTeam.this, "Error", Toast.LENGTH_SHORT).show();
+                    }
+                }))
                 .setNegativeButton(R.string.no, (dialog, which) -> dialog.dismiss());
         builder.create().show();
     }
