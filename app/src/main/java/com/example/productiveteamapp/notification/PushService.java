@@ -1,4 +1,4 @@
-package com.example.productiveteamapp;
+package com.example.productiveteamapp.notification;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import com.example.productiveteamapp.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessagingService;

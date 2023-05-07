@@ -79,7 +79,7 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-        <service android:name=".PushService"
+        <service android:name=".notification.PushService"
             android:exported="false"
             android:permission="TODO">
             <intent-filter>
