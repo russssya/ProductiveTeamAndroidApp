@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.productiveteamapp.adapters.ListAdapterMessage;
+import com.example.productiveteamapp.notification.FcmNotificationSender;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -121,6 +122,7 @@ public class ActivityOneChat extends AppCompatActivity {
             Message message=new Message(text, user_name, date);
             chatTable.child("Messages").push().setValue(message);
             edit_message.setText("");
+            FcmNotificationSender.sendNotification(team_code, chat_name, user_name + " " + text);
         }
     }
 

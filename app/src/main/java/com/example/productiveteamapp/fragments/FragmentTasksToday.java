@@ -28,6 +28,7 @@ import com.example.productiveteamapp.adapters.ListAdapterTeamCheckbox;
 import com.example.productiveteamapp.R;
 import com.example.productiveteamapp.Task;
 import com.example.productiveteamapp.TeamData;
+import com.example.productiveteamapp.notification.FcmNotificationSender;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -36,16 +37,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.messaging.FirebaseMessaging;
-import com.google.firebase.messaging.RemoteMessage;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
 
 public class FragmentTasksToday extends Fragment implements ListAdapterTaskToday.ItemClickListener{
     FloatingActionButton fab;
@@ -228,23 +225,11 @@ public class FragmentTasksToday extends Fragment implements ListAdapterTaskToday
                 DatabaseReference pushedRef=teamsTable.child(team.code).child("Tasks").push();
                 task.code= pushedRef.getKey();
                 pushedRef.setValue(task);
-                sendNotification(team.name, task.name, team.name);
+                FcmNotificationSender.sendNotification(team.code, team.name, "Сьогодні: "+task_name);
             }
             Toast.makeText(getContext(), "Задача створена", Toast.LENGTH_SHORT).show();
             dialog.dismiss();
         });
         but_close_create.setOnClickListener(v -> dialog.dismiss());
-    }
-
-    private void sendNotification(String title, String body, String topic){
-        Map<String, String> data = new HashMap<>();
-        data.put("title", title);
-        data.put("message", body);
-
-        RemoteMessage message = new RemoteMessage.Builder(topic)
-                .setData(data)
-                .build();
-
-        FirebaseMessaging.getInstance().send(message);
     }
 }

@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.productiveteamapp.adapters.TableAdapterSchedule;
+import com.example.productiveteamapp.notification.FcmNotificationSender;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -131,6 +132,7 @@ public class ActivityOneSchedule extends AppCompatActivity implements TableAdapt
                     time_thursday.getText().toString(), time_friday.getText().toString(),
                     time_saturday.getText().toString(), time_sunday.getText().toString());
             scheduleTable.child(schedule.code).setValue(new_schedule);
+            FcmNotificationSender.sendNotification(team_code, team_name, "Зміни у графіку " + schedule.name);
             dialog.dismiss();
         });
         button_close_dialog.setOnClickListener(v -> dialog.dismiss());

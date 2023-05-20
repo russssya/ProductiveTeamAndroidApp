@@ -28,6 +28,7 @@ import com.example.productiveteamapp.TeamData;
 import com.example.productiveteamapp.adapters.ListAdapterTaskTomorrow;
 import com.example.productiveteamapp.adapters.ListAdapterTaskTomorrowDone;
 import com.example.productiveteamapp.adapters.ListAdapterTeamCheckbox;
+import com.example.productiveteamapp.notification.FcmNotificationSender;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -226,6 +227,7 @@ public class FragmentTasksTomorrow extends Fragment implements ListAdapterTaskTo
                 DatabaseReference pushedRef=teamsTable.child(team.code).child("Tasks").push();
                 task.code= pushedRef.getKey();
                 pushedRef.setValue(task);
+                FcmNotificationSender.sendNotification(team.code, team.name, "Завтра: "+task_name);
             }
             Toast.makeText(getContext(), "Задача створена", Toast.LENGTH_SHORT).show();
             dialog.dismiss();

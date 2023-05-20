@@ -3,6 +3,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -75,6 +76,14 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
                 Log.w(TAG, "token should not be null...");
             }
         });
+
+        boolean areNotificationsEnabled = NotificationManagerCompat.from(this).areNotificationsEnabled();
+
+        if (areNotificationsEnabled) {
+            Toast.makeText(ActivityMain.this,"Notifications enabled",Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(ActivityMain.this,"Notifications didn't enable",Toast.LENGTH_SHORT).show();
+        }
     }
 
     @SuppressLint("NonConstantResourceId")

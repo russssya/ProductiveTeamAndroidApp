@@ -28,6 +28,7 @@ import com.example.productiveteamapp.TeamData;
 import com.example.productiveteamapp.adapters.ListAdapterTaskMonthDone;
 import com.example.productiveteamapp.adapters.ListAdapterTaskMonth;
 import com.example.productiveteamapp.adapters.ListAdapterTeamCheckbox;
+import com.example.productiveteamapp.notification.FcmNotificationSender;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -224,6 +225,7 @@ public class FragmentTasksMonth extends Fragment implements ListAdapterTaskMonth
                 DatabaseReference pushedRef=teamsTable.child(team.code).child("Tasks").push();
                 task.code= pushedRef.getKey();
                 pushedRef.setValue(task);
+                FcmNotificationSender.sendNotification(team.code, team.name, "На цей місяць: "+task_name);
             }
             Toast.makeText(getContext(), "Задача створена", Toast.LENGTH_SHORT).show();
             dialog.dismiss();

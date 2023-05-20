@@ -23,6 +23,7 @@ import com.example.productiveteamapp.adapters.ListAdapterTeam;
 import com.example.productiveteamapp.R;
 import com.example.productiveteamapp.TeamData;
 import com.example.productiveteamapp.User;
+import com.example.productiveteamapp.notification.FcmNotificationSender;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -30,6 +31,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.ArrayList;
 
@@ -159,6 +161,7 @@ public class FragmentTeams extends Fragment {
             assert code != null;
             userTable.child("Teams").child(code).child("code").setValue(code);
             Toast.makeText(getContext(),"Команда створена",Toast.LENGTH_SHORT).show();
+            subscribeToTopic(code);
             dialog.dismiss();
         });
         but_close_create.setOnClickListener(v -> dialog.dismiss());
@@ -189,6 +192,7 @@ public class FragmentTeams extends Fragment {
                         Schedule schedule=new Schedule(user.name, pushedRefSchedule.getKey());
                         pushedRefSchedule.setValue(schedule);
                         Toast.makeText(getContext(),"Ви приєднались до команди",Toast.LENGTH_SHORT).show();
+                        subscribeToTopic(code);
                     }
                     else{
                         Toast.makeText(getContext(), "Команди не існує", Toast.LENGTH_SHORT).show();
@@ -203,5 +207,17 @@ public class FragmentTeams extends Fragment {
             dialog.dismiss();
         });
         but_close_join.setOnClickListener(v-> dialog.dismiss());
+    }
+
+    private void subscribeToTopic(String topic){
+        FirebaseMessaging.getInstance().subscribeToTopic(topic).
+                addOnCompleteListener(task -> {
+                    if(task.isSuccessful()){
+                        Toast.makeText(getContext(),"Subscribed",Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        Toast.makeText(getContext(),"Subscription failed",Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 }

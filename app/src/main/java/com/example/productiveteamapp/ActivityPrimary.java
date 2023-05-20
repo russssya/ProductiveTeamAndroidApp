@@ -16,7 +16,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class ActivityPrimary extends AppCompatActivity {
-    private FirebaseAuth mAuth;
+    FirebaseAuth mAuth;
     EditText edit_email_enter, edit_pass_enter,edit_name,edit_email_reg,edit_pass_reg;
     Button button_registration,button_register,button_enter;
     LinearLayout enter_form,reg_form;

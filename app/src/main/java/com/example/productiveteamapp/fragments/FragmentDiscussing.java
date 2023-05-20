@@ -27,6 +27,7 @@ import com.example.productiveteamapp.R;
 import com.example.productiveteamapp.TeamData;
 import com.example.productiveteamapp.adapters.ListAdapterChat;
 import com.example.productiveteamapp.adapters.ListAdapterTeamCheckbox;
+import com.example.productiveteamapp.notification.FcmNotificationSender;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -213,6 +214,7 @@ public class FragmentDiscussing extends Fragment implements ListAdapterChat.Item
                 DatabaseReference pushedRef=teamsTable.child(team.code).child("Chats").push();
                 chat.chat_code= pushedRef.getKey();
                 pushedRef.setValue(chat);
+                FcmNotificationSender.sendNotification(team.code, team.name, "Створено новий чат "+ chat_name);
             }
             Toast.makeText(getContext(), "Чат створено", Toast.LENGTH_SHORT).show();
             dialog.dismiss();
