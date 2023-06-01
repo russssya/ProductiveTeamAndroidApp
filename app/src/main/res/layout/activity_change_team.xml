@@ -15,7 +15,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-
                 <ImageButton
                     android:layout_width="30dp"
                     android:layout_height="30dp"
@@ -24,11 +23,10 @@
                     android:id="@+id/button_back_one_team"
                     />
             </LinearLayout>
-
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -46,7 +44,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="50dp"
             android:autofillHints="name"
             android:inputType="text"
             android:hint="@string/team_name"
@@ -58,13 +56,13 @@
             android:layout_height="wrap_content"
             style="@style/small_text"
             android:text="@string/team_description"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="100dp"
             />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="130dp"
             android:autofillHints="name"
             android:inputType="text"
             android:id="@+id/edit_desc_change"
@@ -72,10 +70,11 @@
 
         <Button
             style="@style/edit_button"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="220dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginEnd="30dp"
+            android:layout_alignParentEnd="true"
             android:text="@string/edit"
             android:id="@+id/change_info_button"
             />
-    </LinearLayout>
+    </RelativeLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

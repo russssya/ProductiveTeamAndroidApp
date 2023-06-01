@@ -35,6 +35,7 @@ public class ActivityPrimary extends AppCompatActivity {
     }
 
     private void Init1(){
+        Toast.makeText(this, "Started", Toast.LENGTH_SHORT).show();
         enter_form=findViewById(R.id.enter_form);
         reg_form=findViewById(R.id.registration_form);
         edit_email_enter=findViewById(R.id.edit_email_enter);

@@ -40,7 +40,8 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser == null) {
-            Intent intent = new Intent(this, ActivityPrimary.class);
+            Intent intent=new Intent();
+            intent.setClass(ActivityMain.this, ActivityPrimary.class);
             startActivity(intent);
         }
 
@@ -138,9 +139,7 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
                     intent.setClass(ActivityMain.this, ActivityPrimary.class);
                     startActivity(intent);
                 })
-                .setNegativeButton(R.string.no, (dialog, which) -> {
-
-                });
+                .setNegativeButton(R.string.no, (dialog, which) -> {});
         builder.create().show();
     }
 }

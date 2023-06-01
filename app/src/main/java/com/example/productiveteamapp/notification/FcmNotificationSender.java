@@ -2,6 +2,9 @@ package com.example.productiveteamapp.notification;
 
 import android.util.Log;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import org.json.JSONObject;
 
 import java.io.OutputStreamWriter;
@@ -9,12 +12,13 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class FcmNotificationSender {
+    static DatabaseReference mDataBase;
     public static void sendNotification(String topic, String title, String body) {
         Thread thread = new Thread(() -> {
             try {
+                mDataBase= FirebaseDatabase.getInstance().getReference();
                 String FCM_API_URL = "https://fcm.googleapis.com/fcm/send";
-                String SERVER_KEY = "AAAAOImkGIg:APA91bGP0wiQb-Rgt4r5tHd2_-dhjLKTIkOTSeQJWpTrw4rxRlGgTwUfUKWjI1jyS9UE2naahD8NdbdPTs1FYDfAdqabJfEod-08yJy5oxCAzrZ6aqCSxxwh_5kf6z217MScPdlevcFD";
-
+                String SERVER_KEY="AAAAOImkGIg:APA91bGP0wiQb-Rgt4r5tHd2_-dhjLKTIkOTSeQJWpTrw4rxRlGgTwUfUKWjI1jyS9UE2naahD8NdbdPTs1FYDfAdqabJfEod-08yJy5oxCAzrZ6aqCSxxwh_5kf6z217MScPdlevcFD";
                 URL url = new URL(FCM_API_URL);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setUseCaches(false);

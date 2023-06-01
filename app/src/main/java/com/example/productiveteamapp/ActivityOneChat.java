@@ -122,7 +122,7 @@ public class ActivityOneChat extends AppCompatActivity {
             Message message=new Message(text, user_name, date);
             chatTable.child("Messages").push().setValue(message);
             edit_message.setText("");
-            FcmNotificationSender.sendNotification(team_code, chat_name, user_name + " " + text);
+            FcmNotificationSender.sendNotification(team_code, chat_name, user_name + ": " + text);
         }
     }
 
